@@ -1,0 +1,83 @@
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  background: #ffffff;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+}
+/* 
+.summary-banner{
+    width: 500px;
+    height: 150px;
+}
+.summary-banner img {
+  width: 500px;
+  height: 150px;
+  border-radius: 6px;
+  object-fit: cover;
+} */
+
+/* Right content */
+.summary-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.summary-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+.summary-item img {
+  width: 20px;
+  height: 20px;
+}
+
+.summary-item a {
+  color: green;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.summary-item input[type="checkbox"] {
+  margin-left: 10px;
+  width: 18px;
+  height: 18px;
+}
+
+.summary-buy-btn {
+  text-align: right;
+}
+
+.summary-buy-btn button {
+  padding: 10px 28px;
+  background-color: #007f1f;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.summary-buy-btn button:hover {
+  background-color: #006218;
+}

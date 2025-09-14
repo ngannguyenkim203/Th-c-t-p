@@ -1,0 +1,155 @@
+/* product-info.css */
+.product-detail-info {
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    padding: 10px 20px;
+  }
+}
+
+.product-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.product-category {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+.product-details {
+  display: flex;
+  /* align-items: center; */
+  margin-top: 10px;
+  gap: 30px;
+}
+
+.product-price {
+  font-size: 40px;
+  font-weight: bold;
+  color: #006400;
+  margin: 0;
+}
+
+.options {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.options .variant-group{
+   width: 20%;
+}
+
+.options label {
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.options select,
+.options input {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.product-features {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
+  padding-left: 16px;
+}
+
+.quantity-selector {
+  /* margin-top: 20px; */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-label {
+  font-size: 16px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.quantity-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.2s;
+}
+
+.quantity-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.quantity-value {
+  width: 30px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.quantity-value::-webkit-outer-spin-button,
+.quantity-value::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  /* margin-top: 20px; */
+}
+
+.action-btn {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 3px solid #00670A;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-to-cart {
+  background-color: #fff;
+  color: #00670A;
+  font-weight: bold;
+}
+
+.add-to-cart:hover {
+  background-color: #00670A;
+  color: #fff;
+}
+
+.buy-now {
+  background-color: #00670A;
+  color: #fff;
+  font-weight: bold;
+}
+
+.buy-now:hover {
+  background-color: #fff;
+  color: #00670A;
+}

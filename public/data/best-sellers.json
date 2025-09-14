@@ -1,0 +1,28 @@
+[
+  {
+    "productId": 6,
+    "productName": "Cat's Best Smart Pellets Organic Clumping Litter..",
+    "label": "best-seller",
+    "imageUrls": ["/cat's best.webp"],
+    "productPriceSale": 10,
+    "productPrice": 12,
+    "sold": "5.2k",
+    "shopName": "PET MART",
+    "shopAddress": "Da Nang",
+    "rating": 4.8,
+    "shopLogo": "/logo pet mart.png"
+  },
+  {
+    "productId": 7,
+    "productName": "Superior Premium food for flying squirrels",
+    "label": "best-seller",
+    "imageUrls": ["/Superior Premium food for flying squirrels.png"],
+    "productPriceSale": 10,
+    "productPrice": 12,
+    "sold": "5.2k",
+    "shopName": "PET MART",
+    "shopAddress": "Da Nang",
+    "rating": 4.8,
+    "shopLogo": "/logo pet mart.png"
+  }
+]

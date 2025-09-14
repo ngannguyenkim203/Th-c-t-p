@@ -1,0 +1,69 @@
+/* .category-wrapper {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px;
+  gap: 16px;
+  margin: 0 auto;
+  max-width: 1300px;
+} */
+ .category-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cột bằng nhau */
+  gap: 16px;
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+
+.category-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 240px;
+  height: 160px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #fff;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+}
+
+.category-card.highlight {
+  min-width: 360px;
+  background-color: #fff8d0;
+}
+
+.category-info {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  height: 100%;
+}
+
+.category-title {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.category-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* .category-image {
+  height: 80px;
+  width: auto;
+  margin-left: 16px;
+  background-color: none;
+} */

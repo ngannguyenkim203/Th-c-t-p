@@ -1,0 +1,33 @@
+.category-page {
+  background-color: #F7F7F7;
+}
+
+.banner-container {
+  position: relative;
+  height: 630px;
+  background-image: url('../assets/banner/banner-dog.png');
+  background-size: contain;         /* co ảnh vừa khung */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f8f9fa;        /* fallback nền sáng */
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  width: 80%;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.6); /* đen mờ */
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 150px; /* căn giữa theo chiều dọc */
+}
+
+.shop-detail-shopinfo{
+  margin-top: 30px;
+}

@@ -1,0 +1,33 @@
+.product-detail-suggestion {
+  margin: 40px auto;
+  max-width: 1300px;
+  /* padding: 0 20px; */
+}
+
+.suggested-products-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 45px;
+}
+
+.product-detail-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.see-more-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  width: 6%;
+}
+
+.see-more-text {
+  font-weight: bold;
+}
+
+.see-more-icon {
+  font-size: 1rem;
+}

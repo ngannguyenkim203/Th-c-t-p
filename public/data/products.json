@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Áo cho chó",
+    "category": "Clothing",
+    "price": 150000,
+    "discountPrice": 120000,
+    "color": "Đỏ",
+    "size": "M",
+    "weight": "200g",
+    "status": "Hiển thị",
+    "images": ["/catbest.webp", "/catbest.webp", "/catbest.webp"],
+    "description": "Áo cotton cho thú cưng mùa đông"
+  },
+  {
+    "name": "Balo mèo",
+    "category": "Accessory",
+    "price": 250000,
+    "discountPrice": 220000,
+    "color": "Xanh",
+    "size": "L",
+    "weight": "500g",
+    "status": "Ẩn",
+    "images": ["/catbest.webp", "/catbest.webp"],
+    "description": "Balo đựng thú cưng có lưới thoáng"
+  },
+  {
+    "name": "Thức ăn cho chó",
+    "category": "Foods",
+    "price": 120000,
+    "discountPrice": 100000,
+    "color": "N/A",
+    "size": "N/A",
+    "weight": "1kg",
+    "status": "Hiển thị",
+    "images": ["/catbest.webp"],
+    "description": "Thức ăn khô cao cấp cho chó trưởng thành"
+  },
+  {
+    "name": "Đồ chơi gặm",
+    "category": "Toys",
+    "price": 90000,
+    "discountPrice": 85000,
+    "color": "Vàng",
+    "size": "S",
+    "weight": "100g",
+    "status": "Tạm ngưng",
+    "images": ["/catbest.webp", "/catbest.webp"],
+    "description": "Đồ chơi gặm giúp sạch răng cho chó"
+  },
+  {
+    "name": "Lồng vận chuyển",
+    "category": "Housing",
+    "price": 300000,
+    "discountPrice": 270000,
+    "color": "Đen",
+    "size": "XL",
+    "weight": "2kg",
+    "status": "Hiển thị",
+    "images": ["/catbest.webp"],
+    "description": "Lồng vận chuyển nhựa chắc chắn cho thú cưng"
+  },
+  {
+    "name": "Dầu gội chó",
+    "category": "Hygiene",
+    "price": 110000,
+    "discountPrice": 95000,
+    "color": "N/A",
+    "size": "500ml",
+    "weight": "600g",
+    "status": "Hiển thị",
+    "images": ["/catbest.webp"],
+    "description": "Dầu gội dịu nhẹ giúp lông mềm mượt"
+  }
+]

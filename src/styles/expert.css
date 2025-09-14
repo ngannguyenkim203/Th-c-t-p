@@ -1,0 +1,66 @@
+/* Expert Detail Page */
+.expert-intro {
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: end;
+    padding: 20px 30px;
+}
+
+p {
+    margin: 0;
+    margin-bottom: 0;
+}
+
+.expert-intro-content {
+    width: 368px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.expert-intro-info {
+    background-color: antiquewhite;
+    background-color: rgba(0, 0, 0, 0.25);
+
+}
+
+.expert-intro-info p {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.expert-intro-info i {
+    font-size: 14px;
+}
+
+.expert-name {
+    font-size: 40px;
+}
+
+.expert-intro-content button {
+    background-color: #E8FFED;
+}
+
+.expert-intro-content button:hover {
+    background-color: #D4FFD8;
+}
+
+.expert-nav {
+    background-color: white;
+    margin: 20px 0;
+}
+
+.expert-nav-item-active {
+    background-color: #D4FFD8;
+}
+
+.expert-nav-item-inactive {
+    background-color: transparent;
+}
+
+.expert-nav-item-inactive:hover {
+    background-color: #effff1;
+}

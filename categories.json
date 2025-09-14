@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": "2",
+      "name": "ĐỒ CHƠI MỚI",
+      "img": "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+    },
+    {
+      "id": "3",
+      "name": "ACCESSORIES",
+      "img": "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+    },
+    {
+      "id": "5",
+      "name": "SUPPLEMENTS",
+      "img": "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+    },
+    {
+      "id": "6",
+      "name": "HOUSING",
+      "img": "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+    },
+    {
+      "id": "7",
+      "name": "HYGIENE",
+      "img": "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+    },
+    {
+      "id": "8",
+      "name": "MEDICINE",
+      "img": "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+    }
+  ]
+}

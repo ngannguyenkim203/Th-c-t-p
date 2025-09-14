@@ -1,0 +1,111 @@
+.shop-info-container {
+    height: 135px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #fff;
+  /* border-radius: 8px; */
+  /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); */
+}
+
+.shop-info-left {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.shop-info-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: contain;
+  margin: auto 0;
+}
+
+.shop-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.shop-info-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.shop-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #f5a623;
+  margin: 4px 0;
+}
+
+.shop-rating .score {
+  color: #000;
+  font-weight: 500;
+}
+
+.shop-online {
+  color: #666;
+  font-size: 12px;
+  /* margin-bottom: 10px; */
+}
+
+.shop-meta p{
+    margin-bottom: 5px;
+}
+
+.shop-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-btn {
+  background-color: #00670A;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.visit-btn {
+  background-color: white;
+  color: #00670A;
+  border: 1px solid #00670A;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.shop-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;       /* ✅ Căn giữa theo chiều dọc */
+  gap: 12px;
+  font-size: 14px;
+  flex: 2;
+  height: 100%;                  /* Đảm bảo chiếm full chiều cao container */
+}
+
+
+.shop-info-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* ✅ CHIA LÀM 6 CỘT */
+  gap: 10px;
+  align-items: center;
+}
+
+.shop-info-row span {
+  color: #333;
+  font-size: 14px;
+}
+
+.shop-info-row .highlight {
+  color: #e53935;
+  font-weight: 500;
+}

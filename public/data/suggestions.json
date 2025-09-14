@@ -1,0 +1,41 @@
+[
+  {
+    "productId": 1,
+    "productName": "Cat's Best Smart Pellets Organic Clumping Litter",
+    "label": "best-seller",
+    "imageUrls": ["/cat's best.webp"],
+    "productPriceSale": 10,
+    "productPrice": 12,
+    "sold": "5.2k",
+    "rating": 4.8,
+    "shopLogo": "/logo_pet_mart.png",
+    "shopName": "PET MART",
+    "shopAddress": "Da Nang"
+  },
+  {
+    "productId": 2,
+    "productName": "Genuine Dr Cavia Pronutri Rabbit Grass",
+    "label": "new-product",
+    "imageUrls": ["/Genuine Dr Cavia Pronutri Rabbit Grass.png"],
+    "productPriceSale": 8.5,
+    "productPrice": 10,
+    "sold": "2.1k",
+    "rating": 4.6,
+    "shopLogo": "/logo_pet_mart.png",
+    "shopName": "PET MART",
+    "shopAddress": "Ho Chi Minh"
+  },
+  {
+    "productId": 3,
+    "productName": "Superior Premium food for flying squirrels",
+    "label": "best-seller",
+    "imageUrls": ["/Superior Premium food for flying squirrels.png"],
+    "productPriceSale": 10,
+    "productPrice": 12,
+    "sold": "5.2k",
+    "shopName": "PET MART",
+    "shopAddress": "Da Nang",
+    "rating": 4.8,
+    "shopLogo": "/logo pet mart.png"
+  }
+]

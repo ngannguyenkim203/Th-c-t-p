@@ -1,0 +1,187 @@
+.product-card {
+  border: none;
+  width: 180px;
+  height: 336px;
+  font-family: 'Quicksand', sans-serif;
+  background: #fff;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* hiệu ứng hover */
+}
+
+.product-image-wrapper {
+  position: relative;
+  /* text-align: center; */
+  border-radius: 5px;
+  /* background-color: #fff; */
+}
+
+/* .productCard-img {
+  width: 180px;
+  height: 180px;
+} */
+ .productCard-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: block;
+}
+
+.productCard-label {
+  position: absolute;
+  bottom: 8px;
+  left: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Default dot (can be overwritten by specific class) */
+.productCard-label .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Best Seller Style */
+.productCard-label.best-seller {
+  background-color: #e6f4ea;
+  color: #047857;
+}
+.productCard-label.best-seller .dot {
+  background-color: #047857;
+}
+
+/* New Product Style */
+.productCard-label.new-product {
+  background-color: #e7f1ff;
+  color: #1D4ED8;
+}
+.productCard-label.new-product .dot {
+  background-color: #1D4ED8;
+}
+
+/* Popular Style */
+.productCard-label.popular {
+  background-color: #ffe8e8;
+  color: #EF4444;
+}
+.productCard-label.popular .dot {
+  background-color: #EF4444;
+}
+
+.productCard-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #111827;
+   display: -webkit-box;
+  -webkit-line-clamp: 2;        /* chỉ hiển thị 2 dòng */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  height: calc(1.4em * 2);  /* đảm bảo chỉ 2 dòng */
+  margin: 0;
+}
+
+.productCard-rating-row {
+  display: flex;
+  align-items: center;
+}
+
+.productCard-price-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  margin-right: 15px;
+}
+
+.productCard-price-sale {
+  color: #dc2626;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.productCard-price-original {
+  color: #6b7280;
+  text-decoration: line-through;
+  font-weight: semibold;
+  align-items: center;
+  font-size: 12px;
+}
+
+.productCard-sold {
+  margin-left: auto;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.productCard-shop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.shopCard-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  margin-right: 6px;
+  border-radius: 50%;
+}
+
+.shopCard-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 100px; /* giới hạn chiều rộng tránh tràn */
+}
+
+.shopCard-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #1F2937;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shopCard-location {
+  font-size: 10px;
+  color: #6B7280;
+  font-weight: bold;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.add-cart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.add-cart-btn img {
+  width: 28px;
+  height: 28px;
+}

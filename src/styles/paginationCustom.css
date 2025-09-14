@@ -1,0 +1,41 @@
+.custom-pagination {
+  display: flex;
+  align-items: center;
+}
+
+.custom-pagination .page-item {
+  display: flex;
+  align-items: center;
+}
+
+.custom-pagination .page-link {
+  color: #006400;
+  background-color: transparent;
+  border: none;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 8px 16px;
+  min-width: 44px;
+  text-align: center;
+  margin: 0 4px; /* khoảng cách nhỏ giữa các số */
+}
+
+.custom-pagination .page-item.active .page-link {
+  background-color: #006400;
+  color: white;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  background-color: transparent;
+}
+
+.custom-pagination .page-item:first-child,
+.custom-pagination .page-item:last-child {
+  margin: 0 200px; /* cách xa cụm số */
+}
+
+.custom-pagination .page-link:focus {
+  box-shadow: none;
+}

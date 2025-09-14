@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Toys & Entertainment",
+    "name": "FOODS",
+    "imageUrl": "/categories/logo_food.png"
+  },
+  {
+    "title": "Home & Living",
+    "name": "TOYS",
+    "imageUrl": "/categories/logo_toy.png"
+  },
+  {
+    "title": "Clothing & Shoes",
+    "name": "ACCESSORIES",
+    "imageUrl": "/categories/logo_accessory.png"
+  },
+  {
+    "title": "Toys & Entertainment",
+    "name": "CLOTHING",
+    "imageUrl": "/categories/logo_clothing.png"
+  },
+  {
+    "title": "Toys & Entertainment",
+    "name": "SUPPLEMENTS",
+    "imageUrl": "/categories/logo_supplement.png"
+  },
+  {
+    "title": "Toys & Entertainment",
+    "name": "HOUSING",
+    "imageUrl": "/categories/logo_housing.png"
+  },
+  {
+    "title": "Toys & Entertainment",
+    "name": "HYGIENE",
+    "imageUrl": "/categories/logo_hygiene.png"
+  },
+  {
+    "title": "Toys & Entertainment",
+    "name": "MEDICINE",
+    "imageUrl": "/categories/logo_medicine.png"
+  }
+]
