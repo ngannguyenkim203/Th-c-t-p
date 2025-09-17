@@ -14,6 +14,7 @@ import UpdateProductPage from "../pages/shop/UpdateProductPage";
 import ShopLayout from "../layouts/ShopLayout";
 import CartPage from "../pages/shop/CartPage";
 import RegisterShopPage from "../pages/shop/RegisterShopPage";
+import OrderPage from "../pages/shop/OrderPage";
 
 function AppRoutes() {
     return (
@@ -34,6 +35,7 @@ function AppRoutes() {
             <Route path="/category/:categoryId" element={<CategoryPage />} />
             <Route path="/category" element={<CategoryPage />} />
             <Route path="/profileShop" element={<ProfileShopPage />} /> 
+            <Route path="/order" element={<OrderPage />} />
 
             {/* Shop Manager */}
             <Route path="/shopManager" element={<ShopLayout />}>

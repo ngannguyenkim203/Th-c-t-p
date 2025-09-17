@@ -1,7 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/cartSummary.css";
 
 const CartSummary = ({ totalItems, totalPayment }) => {
+    const navigate = useNavigate();
+
+    const handleBuyNow = () => {
+        navigate("/order"); // chuyển sang OrderPage
+    };
     return (
         <div className="cart-summary">
             <div className="summary-details">
@@ -48,7 +54,7 @@ const CartSummary = ({ totalItems, totalPayment }) => {
                         </div>
 
                         <div className="summary-buy-btn">
-                            <button>BUY NOW</button>
+                            <button onClick={handleBuyNow}>BUY NOW</button>
                         </div>
                     </div>
                 </div>
