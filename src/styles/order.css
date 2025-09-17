@@ -1,0 +1,188 @@
+.order-container {
+    width: 100%;
+    margin: 20px auto;
+    /* padding: 20px; */
+}
+
+/* Thanh bước tiến trình */
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(0, 128, 0);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.progress-step i {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: rgb(0, 128, 0);
+}
+
+.progress-line {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-line.active {
+  background: rgb(0, 128, 0); 
+}
+
+.check-icon {
+  position: relative;
+  background: #fff;
+  border: 2px solid rgb(0, 128, 0);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 128, 0);
+  font-size: 12px;
+  margin: 0 8px;
+}
+
+.progress-line.active .check-icon {
+  background: rgb(0, 128, 0);
+  color: #fff;         
+  border-color: rgb(0, 128, 0);
+}
+
+.check-icon i {
+  font-size: 12px;
+}
+
+/* Bố cục nội dung */
+.order-content {
+    /* margin-top: 50px; */
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.order-items {
+    flex: 2;
+    /* chiếm 65% */
+    /* border: 1px solid #ddd; */
+    border-radius: 8px;
+    background: #fafafa;
+    height: 100%;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 50px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info .category {
+    margin: 0;
+    font-size: 11px;
+}
+
+.item-info .price {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+}
+
+.quantity-control {
+    display: flex;
+    flex: 0.5;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantity-control .qty-btn {
+    background-color: rgb(0, 128, 0);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.785); 
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+/* Tóm tắt đơn hàng */
+.order-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+    flex: 1;
+    /* chiếm 35% */
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.order-summary h3 {
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.checkout-btn {
+    margin-top: auto;
+    /* ép nút xuống cuối */
+    width: 100%;
+    padding: 10px;
+    background: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.checkout-btn:hover {
+    background: #e65c00;
+}

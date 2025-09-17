@@ -62,7 +62,7 @@ const RegisterForm = ({ setShowLogin }) => {
             const user = await authService.registerService(form);
             login(user.data);
             alert("Registration successful! Welcome to Care's Paw!");
-            navigate("/forum");
+            navigate("/shop");
         } catch (error) {
             console.error("Error during registration:", error);
             setError("Registration failed. Please try again.");
