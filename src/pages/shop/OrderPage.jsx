@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../styles/order.css";
 import MainLayout from "../../layouts/MainLayout";
 import Footer from "../../components/Common/Footer";
@@ -7,40 +7,24 @@ import ProgressBar from "../../components/Common/ProgressBar";
 
 const OrderPage = () => {
   const navigate = useNavigate();
-
-  const [orderItems, setOrderItems] = useState([
-    {
-      id: 1,
-      name: "Thức ăn cho mèo Me-O",
-      category: "Food",
-      price: 120000,
-      quantity: 1,
-      image: "/catbest.webp",
-    },
-    {
-      id: 2,
-      name: "Vòng cổ cho chó",
-      category: "Accessory",
-      price: 80000,
-      quantity: 2,
-      image: "/catbest.webp",
-    },
-  ]);
+    const location = useLocation();
+  const selectedItems  = location.state || {};
+  const [orderItems, setOrderItems] = useState(selectedItems);
 
   const handleQuantityChange = (id, newQty) => {
     setOrderItems(
       orderItems.map((item) =>
-        item.id === id ? { ...item, quantity: newQty } : item
+        item.id === id ? { ...item, cartItemQuantity: newQty } : item
       )
     );
   };
 
   const handleRemove = (id) => {
-    setOrderItems(orderItems.filter((item) => item.id !== id));
+    setOrderItems(orderItems.filter((item) => item.cartItemId !== id));
   };
 
   const subtotal = orderItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + item.cartItemPrice * item.cartItemQuantity,
     0
   );
   const shippingFee = 30000;
@@ -62,13 +46,13 @@ const OrderPage = () => {
             {orderItems.map((item) => (
               <div key={item.id} className="order-item">
                 {/* Hình ảnh bên trái */}
-                <img src={item.image} alt={item.name} className="item-image" />
+                <img src={item.product.imageUrls} alt={item.product.productName} className="item-image" />
 
                 {/* Thông tin sản phẩm */}
                 <div className="item-info">
-                  <h4>{item.name}</h4>
+                  <h4>{item.product.productName}</h4>
                   <p className="category">Category: {item.category}</p>
-                  <p className="price">{item.price} $</p>
+                  <p className="price">{item.cartItemPrice} $</p>
                 </div>
 
                 {/* Nút tăng giảm số lượng */}
@@ -76,15 +60,15 @@ const OrderPage = () => {
                   <button
                     className="qty-btn"
                     onClick={() =>
-                      handleQuantityChange(item.id, Math.max(1, item.quantity - 1))
+                      handleQuantityChange(item.id, Math.max(1, item.cartItemQuantity - 1))
                     }
                   >
                     -
                   </button>
-                  <span>{item.quantity}</span>
+                  <span>{item.cartItemQuantity}</span>
                   <button
                     className="qty-btn"
-                    onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
+                    onClick={() => handleQuantityChange(item.id, item.cartItemQuantity + 1)}
                   >
                     +
                   </button>
@@ -93,7 +77,7 @@ const OrderPage = () => {
                 {/* Nút xóa */}
                 <button
                   className="remove-btn"
-                  onClick={() => handleRemove(item.id)}
+                  onClick={() => handleRemove(item.cartItemId)}
                 >
                   ✕
                 </button>

@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/cartSummary.css";
 
-const CartSummary = ({ totalItems, totalPayment }) => {
+const CartSummary = ({ totalItems, totalPayment, selectedItems }) => {
     const navigate = useNavigate();
 
     const handleBuyNow = () => {
-        navigate("/order"); // chuyển sang OrderPage
+        navigate("/order", {state: selectedItems }); // chuyển sang OrderPage
     };
     return (
         <div className="cart-summary">
@@ -31,7 +31,7 @@ const CartSummary = ({ totalItems, totalPayment }) => {
                         <div className="summary-item">
                             {/* <img src="/images/total-payment.png" alt="icon" /> */}
                             <span>
-                                <b>Total Payment</b> ${totalPayment.toLocaleString()}
+                                <b>Total Payment</b> ${totalPayment}
                             </span>
                         </div>
                     </div>

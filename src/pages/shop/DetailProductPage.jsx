@@ -21,6 +21,8 @@ import feedbackImg2 from "../../assets/shop/catbest.webp";
 import feedbackImg3 from "../../assets/shop/catbest.webp";
 import userAvatar from "../../assets/shop/avatar.jpeg";
 import { Pagination } from "react-bootstrap";
+import { useAuth } from "../../context/AuthContext";
+import { addToCart } from "../../api/cartApi";
 
 
 const FEATURED = [
@@ -141,7 +143,7 @@ const suggestProduct = [
 
 
 const DetailProductPage = () => {
-
+const { user } = useAuth();
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   // const [variantSelections, setVariantSelections] = useState({});
@@ -166,40 +168,37 @@ const DetailProductPage = () => {
 
   if (!product) return <div>Not...</div>;
 
-  const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    const newItem = {
-      id: product.productId,
-      name: product.productName,
-      price: product.productPrice,
-      imageUrl: product.imageUrls[0],
-      quantity: qty,
-      size: product.size,
-      color: product.color,
+const handleAddToCart = async () => {
+  try {
+    const cartRequest = {
+      userId: user.id,
+      voucherId: null,
+      createdAt: new Date().toISOString(),
+      cartTotalPrice: product.productPrice * qty,
+      cartShippingFee: 20000,
+      cartTotalCoinEarned: 10,
+      cartItems: [
+        {
+          productId: product.productId, // nhớ lấy đúng từ backend trả ra
+          cartItemPrice: product.productPrice,
+          cartItemOriginalPrice: product.productOriginalPrice,
+          cartItemQuantity: qty,
+          cartItemTotalPrice: product.productPrice * qty,
+          flashSale: false,
+        },
+      ],
     };
 
-    const shopIndex = cart.findIndex(s => s.shopId === product.shopId);
-    if (shopIndex !== -1) {
-      const shop = cart[shopIndex];
-      const existingProduct = shop.products.find(p => p.id === newItem.id);
-
-      if (existingProduct) {
-        existingProduct.quantity += newItem.quantity;
-      } else {
-        shop.products.push(newItem);
-      }
-    } else {
-      cart.push({
-        shopId: product.shopId,
-        shopName: product.shopName,
-        products: [newItem],
-      });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
+    const response = await addToCart(cartRequest);
+    console.log("Thêm giỏ hàng thành công:", response.data);
     alert("Đã thêm vào giỏ hàng!");
-  };
+  } catch (error) {
+    console.error("Lỗi khi thêm giỏ hàng:", error);
+    alert("Không thể thêm vào giỏ hàng!");
+  }
+};
+
 
   return (
     <MainLayout>
