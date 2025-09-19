@@ -23,17 +23,21 @@ const OrderPage = () => {
     setOrderItems(orderItems.filter((item) => item.cartItemId !== id));
   };
 
-  const subtotal = orderItems.reduce(
-    (sum, item) => sum + item.cartItemPrice * item.cartItemQuantity,
-    0
-  );
-  const shippingFee = 30000;
-  const total = subtotal + shippingFee;
 
   const handleCheckout = () => {
     navigate("/payment");
   };
-
+  const totalItems = orderItems?.reduce(
+  (sum, item) => sum + item.cartItemQuantity,
+  0
+  );
+  const totalPayment = orderItems?.reduce(
+  (sum, item) => sum + item.cartItemQuantity * item.cartItemPrice,
+  0
+  );
+  
+  const shippingFee = 30000;
+  const total = totalPayment + shippingFee;
   return (
     <MainLayout>
       <div className="order-container">
@@ -46,7 +50,7 @@ const OrderPage = () => {
             {orderItems.map((item) => (
               <div key={item.id} className="order-item">
                 {/* Hình ảnh bên trái */}
-                <img src={item.product.imageUrls} alt={item.product.productName} className="item-image" />
+                <img src={item.product.imageUrls?.[0]?.imageProductUrl} alt={item.product.productName} className="item-image" />
 
                 {/* Thông tin sản phẩm */}
                 <div className="item-info">
@@ -88,10 +92,10 @@ const OrderPage = () => {
           {/* Tóm tắt đơn hàng */}
           <div className="order-summary">
             <h3>ORDER SUMMARY</h3>
-            <p>Tạm tính: {subtotal.toLocaleString()} đ</p>
+            <p>Tạm tính: {totalPayment} đ</p>
             <p>Shipping Fee: {shippingFee.toLocaleString()} đ</p>
             <hr />
-            <h4>Total Price: {total.toLocaleString()} đ</h4>
+            <h4>Total Price: {total} đ</h4>
             <button className="checkout-btn" onClick={handleCheckout}>
               PAYMENT
             </button>
