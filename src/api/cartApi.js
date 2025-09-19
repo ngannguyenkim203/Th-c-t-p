@@ -22,3 +22,25 @@ export const deleteCart = async (cartId) => {
 export const getCartByUserId = async (userId) => {
   return await axios.get(`${API_URL}/get/${userId}`);
 };
+
+// ✅ Lấy danh sách ảnh sản phẩm
+export const getProductImages = async (productId) => {
+  return await axios.get(`${API_URL}/product/${productId}/images`);
+};
+
+// ✅ Lấy danh sách product variant
+export const getProductVariants = async (productId) => {
+  return await axios.get(`${API_URL}/product/${productId}/variants`);
+};
+export const updateCartItem = async (cartId, cartItemId, itemData) => {
+  try {
+    const response = await axios.put(
+      `${API_URL}/${cartId}/item/${cartItemId}`,
+      itemData
+    );
+    return response.data; // trả về CartItemResponse
+  } catch (error) {
+    console.error("Error updating cart item:", error);
+    throw error;
+  }
+};

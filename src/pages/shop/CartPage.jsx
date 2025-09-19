@@ -4,14 +4,14 @@ import CartSummary from "../../components/Shop/CartSummary";
 import "../../styles/cart.css";
 import MainLayout from '../../layouts/MainLayout';
 import { useAuth } from "../../context/AuthContext";
-import { deleteCart, getCartByUserId } from "../../api/cartApi";
+import { deleteCart, getCartByUserId, getProductImages, getProductVariants } from "../../api/cartApi";
 
 const CartPage = () => {
   const { user } = useAuth();
   const [cart, setCart] = useState();
   const [selectedItems, setSelectedItems] = useState([]);
 
-  const updateQuantity = ()=>{}
+
   // const updateQuantity = (shopId, productId, amount) => {
   //   const updatedCart = cart.map((shop) => {
   //     if (shop.shopId === shopId) {
@@ -47,21 +47,50 @@ const CartPage = () => {
   // };
 
   // const { totalItems, totalPayment } = calculateTotals(cart);
-  useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const response = await getCartByUserId(user.id);
-        console.log("ádasd", response?.data)
-        setCart(response.data); // response.data mới là dữ liệu giỏ hàng
-      } catch (error) {
-        console.error("Lỗi khi lấy giỏ hàng:", error);
-      }
-    };
+useEffect(() => {
+  const fetchCart = async () => {
+    try {
+      const response = await getCartByUserId(user.id);
+      let cartData = response.data; // dữ liệu giỏ hàng gốc
+      console.log("cartData",cartData);
+      
+      // Nếu có items trong giỏ hàng thì loop để gọi thêm API
+      if (cartData?.cartItems?.length > 0) {
+        const updatedItems = await Promise.all(
+          cartData.cartItems.map(async (item) => {
+            // Gọi API lấy ảnh sản phẩm
+            const imgRes = await getProductImages(item.product.productId);
+            // Gọi API lấy variants
+            const variantRes = await getProductVariants(item.product.productId);
 
-    if (user?.id) {
-      fetchCart();
+            return {
+              ...item,
+              product: {
+                ...item.product,
+                imageUrls: imgRes.data,       // ép thêm vào product
+                productVarriants: variantRes.data, // ép thêm vào product
+              },
+            };
+          })
+        );
+
+        cartData = {
+          ...cartData,
+          cartItems: updatedItems,
+        };
+      }
+
+      setCart(cartData); // ✅ gán data cuối cùng vào state
+    } catch (error) {
+      console.error("Lỗi khi lấy giỏ hàng:", error);
     }
-  }, [user?.id]);
+  };
+
+  if (user?.id) {
+    fetchCart();
+  }
+}, [user?.id, cart?.cartItems.length]);
+
 const deleteCartItem = async (id) => {
   try {
     await deleteCart(id); // gọi API backend xoá
@@ -80,7 +109,14 @@ const deleteCartItem = async (id) => {
       setSelectedItems((prev) => prev.filter((i) => i.cartItemId !== item.cartItemId)); // bỏ ra
     }
   };
-  
+  const totalItems = cart?.cartItems?.reduce(
+  (sum, item) => sum + item.cartItemQuantity,
+  0
+  );
+  const totalPayment = cart?.cartItems?.reduce(
+  (sum, item) => sum + item.cartItemQuantity * item.cartItemPrice,
+  0
+);
   return (
     <MainLayout>
       <div className="cart-container">
@@ -95,13 +131,12 @@ const deleteCartItem = async (id) => {
           <CartShop
             key={cart.cartId}
             shop={cart}
-            updateQuantity={updateQuantity}
           handleSelectItem={handleSelectItem}
           deleteCartItem={deleteCartItem}
           />
      }
 
-        <CartSummary totalItems={cart?.cartItems.lenght || 0} totalPayment={cart?.cartTotalPrice} selectedItems={selectedItems} />
+        <CartSummary totalItems={totalItems || 0} totalPayment={totalPayment} selectedItems={selectedItems} />
       </div>
     </MainLayout>
   );

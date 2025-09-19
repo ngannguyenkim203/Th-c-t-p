@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/cartSummary.css";
 
 const CartSummary = ({ totalItems, totalPayment, selectedItems }) => {
+    console.log("selectedItems",selectedItems);
+    
     const navigate = useNavigate();
 
     const handleBuyNow = () => {
@@ -53,9 +55,12 @@ const CartSummary = ({ totalItems, totalPayment, selectedItems }) => {
                             <input type="checkbox" />
                         </div>
 
-                        <div className="summary-buy-btn">
-                            <button onClick={handleBuyNow}>BUY NOW</button>
-                        </div>
+                    {Array.isArray(selectedItems) && selectedItems.length > 0 && (
+                            <div className="summary-buy-btn">
+                                <button onClick={handleBuyNow}>BUY NOW</button>
+                            </div>
+                    )}
+
                     </div>
                 </div>
             </div>

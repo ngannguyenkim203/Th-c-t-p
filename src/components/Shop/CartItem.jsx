@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import defaultImage from "../../assets/dog.png"; // ảnh mặc định nếu ảnh lỗi
+import { useNavigate } from "react-router-dom";
+import { updateCartItem } from "../../api/cartApi";
 
-const CartItem = ({ shopId, item, updateQuantity, handleSelectItem, deleteCartItem }) => {
-  console.log("item",item);
-  
+const CartItem = ({ cart,shopId, item, handleSelectItem, deleteCartItem }) => {
+    const navigate = useNavigate(); // hook dùng để điều hướng
+   const [quantity, setQuantity] = useState(item?.cartItemQuantity || 1);
+
+  useEffect(() => {
+    // nếu prop item thay đổi từ cha -> sync lại
+    setQuantity(item?.cartItemQuantity || 1);
+  }, [item]);
   const [checked, setChecked] = useState(false);
   // Tạm flash sale nếu giá < 20
   const isFlashSale = item?.flashSale;
@@ -15,13 +22,32 @@ const CartItem = ({ shopId, item, updateQuantity, handleSelectItem, deleteCartIt
     setChecked(newChecked);
     handleSelectItem?.(item, newChecked); // 👈 gửi lên cha
   };
+    const handleClick = (productId) => {
+    navigate(`/product/${productId}`); // chuyển tới URL chi tiết sản phẩm
+  };
+    const handleUpdate = async (newQuantity) => {
+  const updatedItem = {
+      productId: item?.product?.productId,  // cần cho backend tìm ProductEntity
+      cartItemQuantity: newQuantity,
+      cartItemPrice: item?.cartItemPrice
+    };
+
+
+    try {
+      const result = await updateCartItem(cart?.cartId, item?.cartItemId, updatedItem);
+     setQuantity(newQuantity);
+    } catch (err) {
+      alert("Lỗi khi update cart item!");
+    }
+  };
   return (
-    <div className="cart-item">
+    <div className="cart-item"   >
       <div className="product-row">
-        <div className="product-left">
+        <div className="product-left" >
            <input type="checkbox" checked={checked} onChange={handleCheck} />
-          <img
-            src={item?.product?.imageUrls || defaultImage}
+          <div onClick={() => handleClick(item?.product?.productId)}>
+              <img
+            src={item?.product?.imageUrls?.[0]?.imageProductUrl || defaultImage}
             alt={item?.product?.productName || "Product"}
             className="product-img"
             onError={(e) => {
@@ -30,11 +56,12 @@ const CartItem = ({ shopId, item, updateQuantity, handleSelectItem, deleteCartIt
             }}
           />
         </div>
+        </div>
 
         <div className="product-info">
           <div className="product-name">{item?.product?.productName || "No name"}</div>
           <div className="product-attr">
-            Size: {item?.product?.size || "N/A"} &nbsp;&nbsp; Color: {item?.product?.color || "N/A"}
+            Size: {item?.product?.productVarriants?.[0]?.productVarriantValue || "N/A"} &nbsp;&nbsp; Color: {item?.product?.productVarriants?.[1]?.productVarriantValue || "N/A"}
           </div>
           {isFlashSale && (
             <div className="flash-sale">
@@ -54,11 +81,26 @@ const CartItem = ({ shopId, item, updateQuantity, handleSelectItem, deleteCartIt
           )}
         </div>
 
-        <div className="quantity-control">
-          <button onClick={() => updateQuantity(shopId, item?.product?.productId, -1)}>-</button>
-          <span>{item?.cartItemQuantity}</span>
-          <button onClick={() => updateQuantity(shopId, item?.product?.productId, 1)}>+</button>
-        </div>
+     <div className="quantity-control">
+        <button 
+          onClick={() => {
+            if (quantity  > 1) {
+              handleUpdate(quantity - 1);
+            } else {
+              alert("Số lượng tối thiểu là 1");
+            }
+          }}
+        >
+          -
+        </button>
+        <span>{quantity}</span>
+        <button 
+          onClick={() => handleUpdate(quantity  + 1)}
+        >
+          +
+        </button>
+      </div>
+
 
         <div className="product-actions">
         <button 
