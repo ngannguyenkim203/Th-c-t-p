@@ -10,7 +10,7 @@ const ProgressBar = () => {
     : location.pathname.includes("payment")
     ? 2
     : 1;
-
+ 
   return (
     <div className="progress-wrapper">
       {/* Step 1 */}

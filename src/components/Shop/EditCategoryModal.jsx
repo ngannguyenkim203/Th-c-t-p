@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Button, Form, Image } from 'react-bootstrap';
-import {createCategory, updateCategory } from '../../api/categoryApi';
+import {createCategory, updateCategory } from '../../services/categoryService.js';
 
 const EditCategoryModal = ({ show, onClose, category, onSave, isCreate }) => {
     const [categoryName, setCategoryName] = useState('');

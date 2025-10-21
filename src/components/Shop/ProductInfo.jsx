@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/productInfo.css';
 import StarRating from './StarRating';
-import { getCategoryById } from '../../api/categoryApi.js';
+import { getCategoryById } from '../../services/categoryService.js';
 
 export default function ProductInfo({ product, qty, setQty, onAddToCart }) {
   const [categoryName, setCategoryName] = useState('');
@@ -64,7 +64,7 @@ export default function ProductInfo({ product, qty, setQty, onAddToCart }) {
       <p className="product-category">{categoryName}</p>
 
       <div className="product-details">
-        <p className="product-price">${product.productPrice?.toLocaleString()}</p>
+        <p className="product-price">${product.productPriceSale?.toLocaleString()}</p>
         <StarRating rating={product.rating} />
       </div>
 

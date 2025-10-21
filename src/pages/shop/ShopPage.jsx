@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { getNewProducts, getBestSellers, getSuggestedProducts } from "../../api/productApi";
+import { getNewProducts, getBestSellers, getSuggestedProducts } from "../../services/productService.js";
 import ProductCard from '../../components/Shop/ProductCard';
 import ProductSuggestionSection from '../../components/Shop/ProductSuggestionSection';
 import CategoryList from '../../components/Shop/CategoryList';
@@ -37,15 +37,19 @@ const ProductSection = ({ title, products }) => {
       <h3 className="section-title">{title}</h3>
       <div className="product-scroll-wrapper">
         <div className="product-list" ref={scrollRef}>
-          {products.map((product, idx) => (
-            <div
-              key={idx}
-              onClick={() => handleClick(product.productId)}
-              style={{ cursor: "pointer" }}
-            >
-              <ProductCard product={product} />
-            </div>
-          ))}
+          {products && products.length > 0 ? (
+            products.map((product) => (
+              <div
+                key={product.productId}
+                onClick={() => handleClick(product.productId)}
+                style={{ cursor: "pointer" }}
+              >
+                <ProductCard product={product} />
+              </div>
+            ))
+          ) : (
+            <p>Không có sản phẩm nào</p>
+          )}
         </div>
       </div>
       <div className="arrow-wrapper">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchProducts } from '../../api/productApi';
-import { fetchCategories } from '../../api/categoryApi';
+import { fetchProducts } from '../../services/productService.js';
+import { fetchCategories } from '../../services/categoryService.js';
 import { fetchVarriants } from '../../api/varriantApi';
 
 const ProductTable = ({ onEdit, handleDelete }) => {
@@ -83,7 +83,7 @@ const ProductTable = ({ onEdit, handleDelete }) => {
               <th>Category</th>
               <th>Price</th>
               <th>Amount</th>
-              <th>Describe</th>
+              {/* <th>Describe</th> */}
               <th>Using</th>
               <th>Other</th>
               <th>Status</th>
@@ -117,18 +117,18 @@ const ProductTable = ({ onEdit, handleDelete }) => {
                 </td>
                 <td>{p.productName}</td>
                 <td>{getCategoryName(p.categoryId)}</td>
-                <td>${p.productPrice.toLocaleString()}</td>
+                <td>${p.productPriceSale.toLocaleString()}</td>
                 <td>{p.productAmount}</td>
-                <td>{p.productDescribe}</td>
+                {/* <td>{p.productDescribe}</td> */}
                 <td>{p.productUsing}</td>
                 <td>
                   {p.productVarriants?.length > 0 ? (
                     <div className="d-flex flex-column text-start gap-1">
                       {p.productVarriants.map((v, idx) => {
-                        const name = varriantsMap?.[Number(v.varriantId)] || 'Thuộc tính';
+                        const name = varriantsMap?.[Number(v.varriantId)] || 'Size';
                         return (
                           <span key={idx}>
-                            <strong>{name}:</strong> {v.productVarriantValue}
+                            <strong>Property: </strong> {v.productVarriantValue}
                           </span>
                         );
                       })}

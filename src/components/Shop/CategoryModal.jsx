@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Button, Row, Col, Image, Spinner, Dropdown } from 'react-bootstrap';
-import { fetchCategories, deleteCategory } from '../../api/categoryApi';
+import { fetchCategories, deleteCategory } from '../../services/categoryService.js';
 import EditCategoryModal from '../Shop/EditCategoryModal';
 
 const CategoryModal = ({ show, handleClose }) => {
@@ -15,7 +15,7 @@ const CategoryModal = ({ show, handleClose }) => {
             setLoading(true);
             fetchCategories()
                 .then((data) => {
-                    setCategories(data);
+                    setCategories(Array.isArray(data) ? data : []);
                     setLoading(false);
                 })
                 .catch(() => setLoading(false));

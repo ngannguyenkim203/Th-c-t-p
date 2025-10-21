@@ -3,10 +3,8 @@ import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import { Modal, Button, Form, Row, Col, Alert } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext.js';
 import MainLayout from '../../layouts/MainLayout.jsx';
-import { registerShop, getShopByUserId } from '../../api/shopApi.js';
+import { registerShop, getShopByUserId } from '../../services/shopService.js';
 import { useNavigate } from 'react-router-dom';
-
-
 
 function RegisterShopPage() {
   const { user, login } = useAuth();

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../api/productApi";
-import { getCategoryById } from "../../api/categoryApi";
+import { getProductById } from "../../services/productService.js";
+import { getCategoryById } from "../../services/categoryService.js";
+import { Pagination } from "react-bootstrap";
+import { useAuth } from "../../context/AuthContext";
+import { addToCart } from "../../services/cartService.js";
+
 import '../../styles/productDetailPage.css';
 import MainLayout from '../../layouts/MainLayout';
 import MainHeader from "../../components/Common/MainHeader";
@@ -20,9 +24,6 @@ import feedbackImg1 from "../../assets/shop/catbest.webp";
 import feedbackImg2 from "../../assets/shop/catbest.webp";
 import feedbackImg3 from "../../assets/shop/catbest.webp";
 import userAvatar from "../../assets/shop/avatar.jpeg";
-import { Pagination } from "react-bootstrap";
-import { useAuth } from "../../context/AuthContext";
-import { addToCart } from "../../api/cartApi";
 
 
 const FEATURED = [
@@ -275,7 +276,7 @@ const handleAddToCart = async () => {
           {/* ---------- See more ---------- */}
           <div className="see-more-wrapper">
             <span className="see-more-text">See more</span>
-            <span className="see-more-icon"><i class="fa-solid fa-angle-down"></i></span>
+            <span className="see-more-icon"><i className="fa-solid fa-angle-down"></i></span>
           </div>
         </div>
         {/* ---------- Footer ---------- */}

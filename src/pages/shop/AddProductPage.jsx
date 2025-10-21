@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../../styles/addProduct.css';
-import { createProduct } from '../../api/productApi';
-import { fetchCategories } from '../../api/categoryApi';
-import { getShopByUserId } from '../../api/shopApi';
+import { createProduct } from '../../services/productService.js';
+import { fetchCategories } from '../../services/categoryService.js';
+import { getShopByUserId } from '../../services/shopService.js';
 
 const MAX_IMAGES = 9;
 
@@ -212,7 +212,7 @@ const AddProductPage = ({onCancel}) => {
 
       {/* Giá */}
       <div className="form-group">
-        <label className="form-label">Price</label>
+        <label className="form-label">Price Origin</label>
         <input type="number"
           className="form-control"
           value={productPrice}
@@ -253,11 +253,11 @@ const AddProductPage = ({onCancel}) => {
       </div>
 
       {/* Mô tả */}
-      <div className="form-group">
+      {/* <div className="form-group">
         <label>Describe</label>
         <textarea value={productDescribe} onChange={(e) => setProductDescribe(e.target.value)} maxLength={1000} placeholder="Enter product description" rows={7} />
         <div className="char-count">{productDescribe.length}/1000</div>
-      </div>
+      </div> */}
 
       {/* Cách sử dụng */}
       <div className="form-group">
@@ -271,7 +271,7 @@ const AddProductPage = ({onCancel}) => {
         <label>Category</label>
         <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
           <option value="">-- Select category --</option>
-          {categories.map((cat) => (
+          {categories?.map((cat) => (
             <option key={cat.categoryId} value={cat.categoryId}>{cat.categoryName}</option>
           ))}
         </select>

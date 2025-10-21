@@ -5,7 +5,7 @@ import SearchBox from '../../components/Common/SearchBox.jsx';
 import ProductTable from '../../components/Shop/ProductTable.jsx';
 import UpdateProductPage from '../../pages/shop/UpdateProductPage.jsx';
 import AddProductPage from '../../pages/shop/AddProductPage.jsx';
-import { deleteProduct } from '../../api/productApi.js';
+import { deleteProduct } from '../../services/productService.js';
 
 const summaryData = [
   { label: 'Total products', value: 50, color: 'text-primary' },

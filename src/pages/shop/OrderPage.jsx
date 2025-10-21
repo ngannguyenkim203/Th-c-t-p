@@ -36,7 +36,7 @@ const OrderPage = () => {
   0
   );
   
-  const shippingFee = 30000;
+  const shippingFee = 3;
   const total = totalPayment + shippingFee;
   return (
     <MainLayout>
@@ -55,7 +55,7 @@ const OrderPage = () => {
                 {/* Thông tin sản phẩm */}
                 <div className="item-info">
                   <h4>{item.product.productName}</h4>
-                  <p className="category">Category: {item.category}</p>
+                  {/* <p className="category">Category: {item.category}</p> */}
                   <p className="price">{item.cartItemPrice} $</p>
                 </div>
 
@@ -92,10 +92,10 @@ const OrderPage = () => {
           {/* Tóm tắt đơn hàng */}
           <div className="order-summary">
             <h3>ORDER SUMMARY</h3>
-            <p>Tạm tính: {totalPayment} đ</p>
-            <p>Shipping Fee: {shippingFee.toLocaleString()} đ</p>
+            <p>Tạm tính: {totalPayment} $</p>
+            <p>Shipping Fee: {shippingFee.toLocaleString()} $</p>
             <hr />
-            <h4>Total Price: {total} đ</h4>
+            <h4>Total Price: {total} $</h4>
             <button className="checkout-btn" onClick={handleCheckout}>
               PAYMENT
             </button>

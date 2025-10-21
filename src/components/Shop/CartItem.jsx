@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import defaultImage from "../../assets/dog.png"; // ảnh mặc định nếu ảnh lỗi
 import { useNavigate } from "react-router-dom";
-import { updateCartItem } from "../../api/cartApi";
+import { updateCartItem } from "../../services/cartService.js";
 
 const CartItem = ({ cart,shopId, item, handleSelectItem, deleteCartItem }) => {
     const navigate = useNavigate(); // hook dùng để điều hướng
@@ -74,10 +74,10 @@ const CartItem = ({ cart,shopId, item, handleSelectItem, deleteCartItem }) => {
           {isFlashSale ? (
             <>
               <span>${flashSalePrice}</span>
-              <del style={{ marginLeft: 4 }}>${item?.product?.productPrice}</del>
+              <del style={{ marginLeft: 4 }}>${item?.product?.productPriceSale}</del>
             </>
           ) : (
-            <span>${item?.product?.productPrice}</span>
+            <span>${item?.product?.productPriceSale}</span>
           )}
         </div>
 

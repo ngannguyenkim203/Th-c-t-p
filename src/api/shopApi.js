@@ -7,7 +7,7 @@ const BASE_URL = 'http://localhost:8080/api/shop';
 //   return response.data;
 // };
 
-export const registerShop = async (formData) => {
+export const registerShopApi = async (formData) => {
   return axios.post(`${BASE_URL}/register`, formData, {
     // headers: { 'Content-Type': 'multipart/form-data' },
   });
@@ -18,7 +18,7 @@ export const registerShop = async (formData) => {
 //   return res.data;
 // };
 
-export const getShopById = async (shopId) => {
+export const getShopByIdApi = async (shopId) => {
   if (!shopId) {
     throw new Error("shopId is required");
   }
@@ -26,7 +26,7 @@ export const getShopById = async (shopId) => {
   return res.data;
 };
 
-export const getShopByUserId = async (userId) => {
+export const getShopByUserIdApi = async (userId) => {
   if (!userId) {
     throw new Error("userId is required");
   }

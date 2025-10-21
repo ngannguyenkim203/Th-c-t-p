@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/categoryList.css';
-import { fetchCategorieSystem } from '../../api/categoryApi';
+import { fetchCategorieSystem } from '../../services/categoryService.js';
 
 const CategoryList = () => {
   const navigate = useNavigate();

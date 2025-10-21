@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getProductById, updateProduct } from "../../api/productApi";
-import { fetchCategories } from "../../api/categoryApi";
+import { getProductById, updateProduct } from "../../services/productService.js";
+import { fetchCategories } from "../../services/categoryService.js";
 import "../../styles/addProduct.css";
 
 const MAX_IMAGES = 9;

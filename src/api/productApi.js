@@ -2,20 +2,10 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8080/api/products';
 
-export const fetchProducts = async (page = 1, pageSize = 5) => {
+export const getAllProductsApi = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/getAllProduct`);
-    const allProducts = response.data;
-
-    const totalItems = allProducts.length;
-    const totalPages = Math.ceil(totalItems / pageSize);
-    const paginatedData = allProducts.slice((page - 1) * pageSize, page * pageSize);
-
-    return {
-      data: paginatedData,
-      totalItems,
-      totalPages
-    };
+    return response.data;
   } catch (error) {
     console.error('Lỗi khi fetch dữ liệu sản phẩm:', error);
     throw error;
@@ -23,7 +13,7 @@ export const fetchProducts = async (page = 1, pageSize = 5) => {
 
 };
 
-export const createProduct = async (formData) => {
+export const createProductApi = async (formData) => {
   return await axios.post(`${BASE_URL}/add`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
@@ -31,33 +21,33 @@ export const createProduct = async (formData) => {
   });
 };
 
-export const updateProduct = async (productId, formData) => {
+export const updateProductApi = async (productId, formData) => {
   return axios.put(`${BASE_URL}/${productId}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 };
-export const deleteProduct = async (productId) => {
+export const deleteProductApi = async (productId) => {
   return axios.delete(`${BASE_URL}/${productId}`);
 };
 
 
-export const getProductById = async (productId) => {
+export const getProductByIdApi = async (productId) => {
   const res = await axios.get(`${BASE_URL}/${productId}`);
   return res.data;
 };
 
-export const getNewProducts = async () => {
+export const getNewProductsApi = async () => {
   const response = await axios.get(`${BASE_URL}/new`);
   return response.data;
 };
 
 
-export const getBestSellers = async () => {
+export const getBestSellersApi = async () => {
   const res = await fetch("/data/best-sellers.json");
   return await res.json();
 };
 
-export const getSuggestedProducts = async () => {
+export const getSuggestedProductsApi = async () => {
   const res = await fetch("/data/suggestions.json");
   return await res.json();
 };

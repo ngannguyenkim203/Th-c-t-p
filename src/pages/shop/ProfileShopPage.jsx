@@ -8,8 +8,8 @@ import PaginationComponent from '../../components/Shop/Pagination';
 import BrandLogo from '../../components/Shop/BrandLogo';
 import Footer from '../../components/Common/Footer';
 import ShopInfo from "../../components/Shop/ShopInfo";
-import { getSuggestedProducts } from '../../api/productApi';
-import { getShopByUserId } from '../../api/shopApi';
+import { getSuggestedProducts } from '../../services/productService.js';
+import { getShopByUserId } from '../../services/shopService.js';
 import { useAuth } from '../../context/AuthContext';
 
 const ProfileShopPage = () => {

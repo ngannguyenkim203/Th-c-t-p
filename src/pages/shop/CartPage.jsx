@@ -4,7 +4,7 @@ import CartSummary from "../../components/Shop/CartSummary";
 import "../../styles/cart.css";
 import MainLayout from '../../layouts/MainLayout';
 import { useAuth } from "../../context/AuthContext";
-import { deleteCart, getCartByUserId, getProductImages, getProductVariants } from "../../api/cartApi";
+import { deleteCart, getCartByUserId, getProductImages, getProductVariants } from "../../services/cartService.js";
 
 const CartPage = () => {
   const { user } = useAuth();
