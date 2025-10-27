@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+// import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import { Modal, Button, Form, Row, Col, Alert } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext.js';
 import MainLayout from '../../layouts/MainLayout.jsx';
-import { registerShop, getShopByUserId } from '../../services/shopService.js';
+import { registerShop } from '../../services/shopService.js';
 import { useNavigate } from 'react-router-dom';
 
 function RegisterShopPage() {
-  const { user, login } = useAuth();
+  const { user } = useAuth();
   const [shopName, setShopName] = useState('');
 
   const [email, setEmail] = useState('');
@@ -17,25 +17,22 @@ function RegisterShopPage() {
 
   const [phoneNumber, setPhoneNumber] = useState('');
   const [shopAddress, setShopAddress] = useState('');
-  const [location, setLocation] = useState(null);
+  // const [location, setLocation] = useState(null);
   const [shopLogo, setShopLogo] = useState(null);
   const [logoPreview, setLogoPreview] = useState(null);
-  const [showMap, setShowMap] = useState(false);
+  // const [showMap, setShowMap] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
 
   const navigate = useNavigate();
 
-  // const { isLoaded } = useJsApiLoader({ googleMapsApiKey: 'AIzaSyDNe4-yOhjafVF45xeNzWVSTDTbBGv4uqw' });
-
-  // const handleMapClick = (e) => {
-  //   const lat = e.latLng.lat();
-  //   const lng = e.latLng.lng();
-  //   setLocation({ lat, lng });
-  //   setAddress(`Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`);
-  //   setShowMap(false);
-  // };
+  React.useEffect(() => {
+    if (user?.role !== "USER") {  // chỉ USER mới được đăng ký
+      alert("Bạn không được phép đăng ký shop!");
+      navigate("/shop"); // hoặc route bạn muốn redirect
+    }
+  }, [user, navigate]);
 
   const handleLogoChange = (e) => {
     const file = e.target.files[0];
@@ -61,17 +58,16 @@ function RegisterShopPage() {
     formData.append("shopAddress", shopAddress);
     formData.append("phoneNumber", phoneNumber);
     formData.append("userId", parseInt(userId));
-    formData.append("status", 1); // ✅ Thêm mặc định status = 1
+    formData.append("status", 1); //Thêm mặc định status = 1
     if (shopLogo) formData.append("shopLogo", shopLogo);
 
     try {
-      await registerShop(formData);
-      const res = await getShopByUserId(userId);
-      const updatedUser = { ...user, role: 2, shop: res.data };
-      login(updatedUser);
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-      setSuccessMsg("Đăng ký shop thành công!");
-      setTimeout(() => navigate("/profileShop"), 2000);
+      const response = await registerShop(formData);
+      if (response) {
+        setSuccessMsg("Đăng ký shop thành công!");
+        setTimeout(() => navigate("/profileShop"), 2000);
+      }
+
     } catch (err) {
       console.error("Đăng ký thất bại:", err);
       setErrorMsg("Đăng ký thất bại. Vui lòng kiểm tra lại thông tin.");

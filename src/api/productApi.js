@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api/products';
+// const BASE_URL = 'http://localhost:8080/api/products';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const getAllProductsApi = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/getAllProduct`);
+    const response = await axios.get(`${API_URL}/products/getAllProduct`);
     return response.data;
   } catch (error) {
     console.error('Lỗi khi fetch dữ liệu sản phẩm:', error);
@@ -14,7 +15,7 @@ export const getAllProductsApi = async () => {
 };
 
 export const createProductApi = async (formData) => {
-  return await axios.post(`${BASE_URL}/add`, formData, {
+  return await axios.post(`${API_URL}/products/add`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -22,22 +23,22 @@ export const createProductApi = async (formData) => {
 };
 
 export const updateProductApi = async (productId, formData) => {
-  return axios.put(`${BASE_URL}/${productId}`, formData, {
+  return axios.put(`${API_URL}/products/${productId}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 };
 export const deleteProductApi = async (productId) => {
-  return axios.delete(`${BASE_URL}/${productId}`);
+  return axios.delete(`${API_URL}/products/${productId}`);
 };
 
 
 export const getProductByIdApi = async (productId) => {
-  const res = await axios.get(`${BASE_URL}/${productId}`);
+  const res = await axios.get(`${API_URL}/products/${productId}`);
   return res.data;
 };
 
 export const getNewProductsApi = async () => {
-  const response = await axios.get(`${BASE_URL}/new`);
+  const response = await axios.get(`${API_URL}/products/new`);
   return response.data;
 };
 

@@ -1,19 +1,19 @@
-import { checkExistingEmailApi, loginApi, registerApi } from "../api/authApi";
+import { checkAuthApi, checkExistingEmailApi, loginApi, registerApi } from "../api/authApi";
 
 // call API + save reducer state
-// const loginService = async (email, password) => {
-//     const response = await loginApi(email, password);
-//     return response;
-// };
 const loginService = async (email, password) => {
-    try {
-        const response = await loginApi(email, password);
-        console.log("Login success:", response); // ✅ In ra response
-        return response;
-    } catch (err) {
-        console.error("Login error:", err);
-        throw err;
+    const response = await loginApi(email, password);
+    console.log("Response login:", response); 
+    // Lưu token và user info vào localStorage
+    if (response?.token) {
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("user", JSON.stringify({
+            id: response.userId,
+            email: response.email,
+            role: response.role,
+        }));
     }
+    return response;
 };
 
 const registerService = async (userData) => {
@@ -36,5 +36,14 @@ const authService = {
     registerService,
     checkExistingEmailService
 };
+
+export const checkAuth = async () => {
+    const isAuth = await checkAuthApi();
+    if (isAuth === "Login-ok") {
+        // console.log("User is authenticated");
+        return true;
+    }
+    return false;
+}
 
 export default authService;

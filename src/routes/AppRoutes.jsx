@@ -4,6 +4,7 @@ import AuthPage from "../pages/AuthPage";
 import ExpertPage from "../pages/ExpertPage";
 import ForumDetailPage from "../pages/ForumDetailPage";
 import ExpertDetailPage from "../pages/ExpertDetailPage";
+import ForgetPassPage from "../pages/ForgetPassPage";
 import ShopPage from "../pages/shop/ShopPage";
 import DetailProductPage from "../pages/shop/DetailProductPage";
 import CategoryPage from "../pages/shop/CategoryPage";
@@ -26,6 +27,7 @@ function AppRoutes() {
             <Route path="/forum-detail/:id" element={<ForumDetailPage />} />
             <Route path="/expert-detail" element={<ExpertDetailPage />} />
             <Route path="/" element={<AuthPage />} />
+            <Route path="/forgot-password" element={<ForgetPassPage />} />
 
             {/* Shop khách hàng */}
             <Route path="/shop" element={<ShopPage />} />

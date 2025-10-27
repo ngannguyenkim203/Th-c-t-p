@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api/category';
+// const BASE_URL = 'http://localhost:8080/api/category';
+const API_URL = process.env.REACT_APP_API_URL;
 
 // Lấy danh sách category
 export const getAllCategoriesApi = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}/getAll`);
+        const response = await axios.get(`${API_URL}/category/getAll`);
         return response.data;
     } catch (error) {
         console.error('Lỗi khi fetch dữ liệu category:', error);
@@ -27,7 +28,7 @@ export const getCategorySystemApi = async () => {
 
 export const updateCategoryApi = async (categoryId, formData) => {
     try {
-        const response = await axios.put(`${BASE_URL}/update/${categoryId}`, formData, {
+        const response = await axios.put(`${API_URL}/category/update/${categoryId}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -41,7 +42,7 @@ export const updateCategoryApi = async (categoryId, formData) => {
 
 export const deleteCategoryApi = async (categoryId) => {
     try {
-        await axios.delete(`${BASE_URL}/delete/${categoryId}`);
+        await axios.delete(`${API_URL}/category/delete/${categoryId}`);
     } catch (error) {
         console.error('Lỗi khi xoá category:', error);
         throw error;
@@ -50,7 +51,7 @@ export const deleteCategoryApi = async (categoryId) => {
 
 export const createCategoryApi = async (formData) => {
     try {
-        const response = await axios.post(`${BASE_URL}/add`, formData, {
+        const response = await axios.post(`${API_URL}/category/add`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -65,7 +66,7 @@ export const createCategoryApi = async (formData) => {
 
 export const getCategoryByIdApi = async (categoryId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/get/${categoryId}`);
+    const response = await axios.get(`${API_URL}/category/get/${categoryId}`);
     return response.data;
   } catch (error) {
     console.error('Lỗi khi lấy category:', error);

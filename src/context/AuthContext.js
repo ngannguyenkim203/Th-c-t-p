@@ -1,38 +1,44 @@
-import { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
+// Tạo Context
 const AuthContext = createContext();
 
+// Provider bao quanh toàn bộ app
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
-    try {
-      const savedUser = localStorage.getItem("user");
-      // Nếu là null hoặc "undefined" thì trả về null
-      if (!savedUser || savedUser === "undefined") return null;
-      return JSON.parse(savedUser);
-    } catch (error) {
-      console.error("Lỗi parse user từ localStorage:", error);
-      return null;
-    }
-  });
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
-  const login = (userData) => {
+  // Khi app load lại, đọc từ localStorage
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const storedToken = localStorage.getItem("token");
+
+    if (storedUser && storedToken) {
+      setUser(JSON.parse(storedUser));
+      setToken(storedToken);
+    }
+  }, []);
+
+  // Khi login thành công
+  const login = (userData, token) => {
     setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
-    // sessionStorage.setItem("userId", userData.id); // ✅ lưu userId
-    // localStorage.setItem("userId", userData.id);
+    setToken(token);
   };
 
+  // Khi logout
   const logout = () => {
     setUser(null);
+    setToken(null);
     localStorage.removeItem("user");
-    sessionStorage.removeItem("userId"); // ✅ xoá khi logout
+    localStorage.removeItem("token");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
+// Custom hook để dùng nhanh
 export const useAuth = () => useContext(AuthContext);

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 export const fetchVarriants = async () => {
-  const response = await axios.get('http://localhost:8080/api/varriants'); // chỉnh lại URL theo backend của bạn
+  const response = await axios.get(`${API_URL}/varriants`); // chỉnh lại URL theo backend của bạn
   return response.data;
 };

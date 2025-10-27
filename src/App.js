@@ -7,7 +7,7 @@ import { NavigationProvider } from "./context/NavigationContext";
 // import ForumDetailPage from "./pages/ForumDetailPage";
 // import ExpertPage from "./pages/ExpertPage";
 // import ExpertDetailPage from "./pages/ExpertDetailPage";
-
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./styles/common.css";
 import { AuthProvider } from "./context/AuthContext";
 // import { BrowserRouter, Router } from "react-router-dom";
